@@ -1,0 +1,8 @@
+---
+title: "P8105_HW1_HL2710"
+author: "Ainsel Levitskaia-Collins, HL2710"
+date: "2025-09-17"
+output: github_document
+---
+
+
