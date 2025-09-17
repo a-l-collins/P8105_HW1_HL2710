@@ -14,6 +14,29 @@ library("moderndive")
 data("early_january_weather")
 ```
 
+Determining important information about `early_january_weather` using a code chunk:
+
+```{r message = FALSE, results = FALSE}
+# Determining variable information about early_january_weather
+str(early_january_weather)
+
+# Determining the size of early_january_weather
+nrow(early_january_weather)
+ncol(early_january_weather)
+
+# Determining the mean temperature of early_january_weather
+mean(early_january_weather$temp)
+```
+
+There are 15 variables in the `early_january_weather` dataset: the weather station 
+which collected data (origin), the time of recording (year, month, day, hour), the 
+temperature recorded in Fahrenheit (temp), the dewpoint in Fahrenheit (dewp), the relative humidity 
+(humid), the wind direction in degrees (wind_dir), the speed and gust of wind in mph (wind_speed, 
+wind_gust), the precipitation in inches (precip), the sea pressure in millibars (pressure), 
+the visibility in miles (visib), and the date and hour of the recording (time_hour).
+
+The dataset has 15 total columns (1 per variable) and 358 rows (1 per observation). The 
+mean temperature recorded in the dataset is 39.6 degrees Fahrenheit.
 
 ### Problem 2
 
