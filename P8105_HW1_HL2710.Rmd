@@ -33,7 +33,7 @@ ncol(early_january_weather)
 Third, determining the mean temperature of `early_january_weather`:
 
 ```{r results = FALSE}
-mean(early_january_weather$temp)
+mean(pull(early_january_weather, temp))
 ```
 
 There are 15 variables in the `early_january_weather` dataset: the weather station 
@@ -74,3 +74,28 @@ half month, the average temperature and humidity levels increase.
 
 ### Problem 2
 
+Creating a dataframe with a random normal sample of size 10, a logical vector indicating whether 
+elements of the random sample are greater than 0, a character vector of length 10, and a factor 
+vector of length 10 with 3 different factor "levels":
+
+```{r}
+variable_types_df = tibble(
+  random_sample = rnorm(10),
+  rs_gt_0 = random_sample > 0,
+  random_chars = c("a", "c", "x", "d", "h", "g", "h", "i", "s", "r"),
+  random_factor = factor(c("yes", "yes", "yes", "no", "no", "no", "unsure", "unsure", "unsure", "unsure"))
+)
+```
+
+Trying to take the mean of each of these variables:
+
+```{r results = FALSE, warning = FALSE}
+mean(pull(variable_types_df, random_sample))
+mean(pull(variable_types_df, rs_gt_0))
+mean(pull(variable_types_df, random_chars))
+mean(pull(variable_types_df, random_factor))
+```
+
+Taking the mean of the random sample (`random_sample`) and logical vector (`rs_gt_0`) variables
+works successfully. However, taking the mean of the random character (`random_chars`) and 
+random factor (`random_factor`) variables is unsuccessful.
