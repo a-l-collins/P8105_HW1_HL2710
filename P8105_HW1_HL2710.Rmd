@@ -7,24 +7,32 @@ output: github_document
 
 ### Problem 1
 
-Loading the `moderndive` library and the `early_january_weather` dataset:
+The following code is used to download the `moderndive` library and the `early_january_weather` dataset:
 
-```{r}
+```{r message = FALSE}
 library("moderndive")
+library("tidyverse")
 data("early_january_weather")
 ```
 
-Determining important information about `early_january_weather` using a code chunk:
+#### Determining important information about `early_january_weather`
 
-```{r message = FALSE, results = FALSE}
-# Determining variable information about early_january_weather
+First, determining variable information about `early_january_weather`:
+
+```{r results = FALSE}
 str(early_january_weather)
+```
 
-# Determining the size of early_january_weather
+Second, determining the size of `early_january_weather`:
+
+```{r results = FALSE}
 nrow(early_january_weather)
 ncol(early_january_weather)
+```
 
-# Determining the mean temperature of early_january_weather
+Third, determining the mean temperature of `early_january_weather`:
+
+```{r results = FALSE}
 mean(early_january_weather$temp)
 ```
 
@@ -37,6 +45,32 @@ the visibility in miles (visib), and the date and hour of the recording (time_ho
 
 The dataset has 15 total columns (1 per variable) and 358 rows (1 per observation). The 
 mean temperature recorded in the dataset is 39.6 degrees Fahrenheit.
+
+#### Creating a scatterplot of `temp` vs `time`
+
+First, create a scatterplot of `temp` vs `time`:
+
+```{r}
+ggp_early_jan_weather = 
+  ggplot(early_january_weather, aes(x = time_hour, y = temp, color = humid)) +
+  geom_point()
+```
+
+Second, save the scatterplot of `temp` vs `time`:
+
+```{r}
+ggsave("ggp_early_jan_weather.pdf", ggp_early_jan_weather, width = 9, height = 5)
+```
+
+Third, display the scatterplot of `temp` vs `time`:
+
+```{r}
+ggp_early_jan_weather
+```
+
+The overall pattern of the scatterplot is that, within each day of the first half of January, 
+there are natural variations of temperature and humidity. However, over the course of the 
+half month, the average temperature and humidity levels increase.
 
 ### Problem 2
 
